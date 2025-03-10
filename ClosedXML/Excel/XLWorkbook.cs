@@ -720,6 +720,26 @@ namespace ClosedXML.Excel
             Load(file);
         }
 
+        #region OpenXmlPackageException: Invalid Hyperlink: Malformed URI
+        public XLWorkbook(String file, XLEventTracking eventTracking, bool toRewriteUri)
+            : this(eventTracking)
+        {
+            _loadSource = XLLoadSource.File;
+            _originalFile = file;
+            _spreadsheetDocumentType = GetSpreadsheetDocumentType(_originalFile);
+
+            if (toRewriteUri)
+            {
+                RewriteAndLoad(file);
+            }
+            else
+            {
+                Load(file);
+            };
+            
+        }
+        #endregion
+
         public XLWorkbook(String file, LoadOptions loadOptions)
             : this(file, loadOptions.EventTracking)
         {

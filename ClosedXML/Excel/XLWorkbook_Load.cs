@@ -32,6 +32,32 @@ namespace ClosedXML.Excel
             LoadSheets(file);
         }
 
+        #region OpenXmlPackageException: Invalid Hyperlink: Malformed URI
+        private void RewriteAndLoad(String file)
+        {
+            // On a eu une erreur lors de l'ouverture,
+            // Pour gérer DocumentFormat.OpenXml.Packaging.OpenXmlPackageException: Invalid Hyperlink: Malformed URI is embedded as a hyperlink in the document.
+            // On ouvre en écriture, on corrige le lien et sauvegarde
+            var openSettings = new OpenSettings
+            {
+                RelationshipErrorHandlerFactory = package =>
+                {
+                    return new UriRelationshipErrorHandler();
+                }
+            };
+
+            using (var dSpreadsheet = SpreadsheetDocument.Open(file, true, openSettings))
+                LoadSpreadsheetDocument(dSpreadsheet);
+        }
+        public class UriRelationshipErrorHandler : RelationshipErrorHandler
+        {
+            public override string Rewrite(Uri partUri, string id, string uri)
+            {
+                return "https://lien";
+            }
+        }
+        #endregion
+
         private void Load(Stream stream)
         {
             LoadSheets(stream);
