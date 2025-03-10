@@ -1,3 +1,6 @@
+Cette branche n'est plus nécessaire : Malformed URI sont réécrites par OpenXML depuis 3.0 mais cette version est buguée: le bug est corrigé en 3.2.0
+
+
 ![ClosedXML](https://github.com/ClosedXML/ClosedXML/blob/develop/resources/logo/readme.png)
 
 [![Release](https://img.shields.io/badge/release-0.95.4-blue.svg)](https://github.com/ClosedXML/ClosedXML/releases/latest) [![NuGet Badge](https://buildstats.info/nuget/ClosedXML)](https://www.nuget.org/packages/ClosedXML/) [![.NET Framework](https://img.shields.io/badge/.NET%20Framework-%3E%3D%204.0-red.svg)](#) [![.NET Standard](https://img.shields.io/badge/.NET%20Standard-%3E%3D%202.0-red.svg)](#) [![Build status](https://ci.appveyor.com/api/projects/status/wobbmnlbukxejjgb?svg=true)](https://ci.appveyor.com/project/ClosedXML/ClosedXML/branch/develop/artifacts)
